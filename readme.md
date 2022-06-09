@@ -1,8 +1,14 @@
+---
+name:    string-inquirer
+version: 0.0.1
+summary: |
+  a small, simple mixin for string equality predicates
+---
+
 Adds methods to string which allows checking for string equality through
 arbitrary predicate methods.
 
-Basically what Rails does in ActiveSupport, but properly handling `respond_to_missing`,
-and instantiate as a mixin to a string's `singleton_class`, rather than as a subclass.
+Basically what Rails does in ActiveSupport, but packaged as a tiny gem.
 
 ## Usage
 
