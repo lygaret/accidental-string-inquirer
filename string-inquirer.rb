@@ -51,7 +51,7 @@ module Accidental
     end
 
     def respond_to_missing?(name, incl_private = false)
-      predicate_value(name.to_s) ? super : true
+      predicate_value(name.to_s) ? true : super
     end
 
   end
