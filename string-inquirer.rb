@@ -4,7 +4,7 @@ module Accidental
   #
   # @example
   #   runtime_mode = "deploy".freeze
-  #   runtime_mode = Accidental::StringInquiry.upgrade runtime_mode
+  #   runtime_mode = Accidental::StringInquirer.upgrade runtime_mode
   #
   #   # predicate methods check for string equality
   #   runtime_mode.deploy?      #=> true
@@ -13,17 +13,17 @@ module Accidental
   #   # still a string, we add methods to the singleton class
   #   runtime_mode.class        #=> String
   #   runtime_mode == "deploy"  #=> true
-  module StringInquiry
+  module StringInquirer
 
     # matches predicate looking methods
     INQUIRER_FORMAT = /^(.+)\?$/
 
-    # a duplicate of the given string, with StringInquiry functionality mixed in.
+    # a duplicate of the given string, with StringInquirer functionality mixed in.
     # @return [String]
     def self.upgrade(str)
       raise ArgumentError, "must be a string!" unless str.is_a? String
 
-      str.dup.tap { _1.singleton_class.include StringInquiry }
+      str.dup.tap { _1.singleton_class.include StringInquirer }
     end
 
     # @param name [String] the method name to turn into a predicate check
@@ -39,7 +39,7 @@ module Accidental
     # If the missing method is _not_ a predicate, keep going up the chain.
     #
     # @example
-    #   foo = StringInquiry.upgrade "foo"
+    #   foo = StringInquirer.upgrade "foo"
     #   "foo".development  #=> NoMethodError
     #   "foo".development? #=> false ("foo" != "development")
     #   "foo".foo?         #=> true ("foo" == "foo")
