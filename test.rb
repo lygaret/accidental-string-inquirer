@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require './string-inquirer'
+require './accidental/string-inquirer'
 
 describe Accidental::StringInquirer do
   before do
